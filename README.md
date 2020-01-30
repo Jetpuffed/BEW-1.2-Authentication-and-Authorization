@@ -5,4 +5,5 @@ This repository tracks my college classwork and homework. It serves no other pur
 
 ### Table of Contents
 Tutorials/ - Tutorial Part 1 & 2
+
 models_questions.md - Models Documentation Questions
