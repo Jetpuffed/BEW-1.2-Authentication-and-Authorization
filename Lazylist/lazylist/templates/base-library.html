@@ -1,0 +1,61 @@
+{% extends "base.html" %} {% load static i18n %}
+
+<!-- Custom CSS -->
+{% block css %}
+{% endblock css %}
+
+<!-- Body -->
+{% block content %}
+<!-- Header -->
+<header>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="{% url "main:index" %}">Lazylist</a>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+          {% if request.get_full_path == "/library/movies" %}
+            <a button type="button" class="btn btn-primary cc" href="{% url "main:movie-create" %}">
+              New Entry
+            </a>
+          {% elif request.get_full_path == "/library/music" %}
+            <a button type="button" class="btn btn-primary cc" href="{% url "main:music-create" %}">
+              New Entry
+            </a>
+          {% elif request.get_full_path == "/library/books" %}
+            <a button type="button" class="btn btn-primary cc" href="{% url "main:book-create" %}">
+              New Entry
+            </a>
+          {% endif %}
+          </li>
+          <li class="nav-item">
+            {% if request.user.is_authenticated %}
+              <a button type="button" class="btn btn-primary cc" href="{% url "account_logout" %}">
+                Logout
+              </a>
+              <a button type="button" class="btn btn-primary cc" href="{% url "users:detail" request.user.username  %}">{% trans "My Profile" %}</a>
+            {% else %}
+              <a button type="button" class="btn btn-primary cc" href="{% url "account_login" %}">
+                Login
+              </a>
+            {% endif %}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="container">
+  <!-- Page Heading -->
+  <h1 class="my-4">
+    <strong>{% block library_name %}{% endblock library_name %}</strong>
+  </h1>
+
+  <div class="row">
+    {% block view %}
+    {% endblock view %}
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,29 @@
+  a {
+    position: relative;
+    
+  }
+  
+  .button-section {
+      position: absolute;
+      top: 20px;
+      right: 10px;
+      padding-left: 72px;
+      padding-top: 10px;
+  }
+  
+  body {
+    background:  rgb(227, 167, 98); /* fallback for old browsers */
+    background: -webkit-linear-gradient(right, rgb(226, 134, 28), rgb(230, 169, 77));
+    background: -moz-linear-gradient(right,  rgb(226, 134, 28), rgb(230, 169, 77));
+    background: -o-linear-gradient(right, rgb(226, 134, 28),  rgb(230, 169, 77));
+    background: linear-gradient(to left, rgb(226, 134, 28), rgb(230, 169, 77));
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;  
+    object-position: center;
+  } 
+  
+  footer {
+    padding-top: 25em;
+  
+  }

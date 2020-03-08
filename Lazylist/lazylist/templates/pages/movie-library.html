@@ -1,0 +1,40 @@
+{% include "base.html" %} {% include "base-library.html" %} {% load static i18n %}
+
+<!-- Custom CSS -->
+{% block css %}
+<link href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fjalla+One|Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static "css/movie-library.css" %}">
+{% endblock css %}
+
+<!-- Body -->
+{% block content %}
+{% block library_name %}Movie Library{% endblock library_name %}
+
+{% block view %}
+  {% if movie %}
+    {% for i in movie %}
+    <div class="col-lg-4 col-sm-6 mb-4">
+      <div class="card h-100">
+        <a href="{{ i.get_absolute_url }}">
+          <img class="card-img-top" src="http://placehold.it/700x400" alt=""
+        /></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="{{ i.get_absolute_url }}">{{ movie.title }}</a>
+          </h4>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet
+            numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit,
+            repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora
+            ex quae? Nihil, dolorem!
+          </p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  {% else %}
+    <p>This library is empty.</p>
+  {% endif %}
+{% endblock view %}
+{% endblock content %}

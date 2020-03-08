@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% load static i18n %}
+
+<!-- Custom CSS -->
+{% block css %}
+<link href="{% static "css/index.css" %}" rel="stylesheet">
+{% endblock css %}
+
+{% block content %}
+<body class="text-center">
+  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+      <div class="inner">
+        <h3 class="masthead-brand">Lazylist</h3>
+        <nav class="nav nav-masthead justify-content-center">
+          <a class="nav-link active" href="{% url "main:index" %}">Home</a>
+          {% if request.user.is_authenticated %}
+          <a class="nav-link" href="{% url "main:library" %}">My Library</a>
+          {% else %}
+          <a class="nav-link" href="{% url "account_login" %}">Login</a>
+          <a class="nav-link" href="{% url "account_signup" %}">Signup</a>
+          {% endif %}
+        </nav>
+      </div>
+    </header>
+
+    <main role="main" class="inner cover">
+      <h1 class="cover-heading">Lazylist. Your online media catalog.</h1>
+      <p class="lead">Keep track of all your media libraries in one place.</p>
+      <p class="lead">
+        {% if request.user.is_authenticated %}
+        <a href="{% url "main:library" %}" class="btn btn-lg btn-secondary">Go To Library</a>
+        {% else %}
+        <a href="{% url "account_signup" %}" class="btn btn-lg btn-secondary">Get Started</a>
+        {% endif %}
+      </p>
+    </main>
+
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+        <p>Lazylist 2020</p>
+      </div>
+    </footer>
+  </div>
+{% endblock content %}
